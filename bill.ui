@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Bill</class>
+ <widget class="QWidget" name="Bill">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>864</width>
+    <height>492</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>账单查询</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* 全局样式 */
+QWidget {
+    font-family: &quot;Inter&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+    color: #334155;
+    background-color: #f8fafc;
+}
+
+/* 标题区域 */
+QLabel#label {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0f172a;
+    padding: 20px 0 15px 24px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 搜索区域卡片 */
+QWidget#searchCard {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* 标签样式 */
+QLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    padding-right: 8px;
+}
+
+/* 输入框 */
+QLineEdit {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+QLineEdit:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    outline: none;
+}
+
+/* 查询按钮 */
+QPushButton#queryButton {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+QPushButton#queryButton:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4);
+}
+QPushButton#queryButton:pressed {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px -1px rgba(59, 130, 246, 0.4);
+}
+
+/* 表格卡片 */
+QWidget#tableView {
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* 表格样式 */
+QTableWidget {
+    border: none;
+    background-color: #ffffff;
+    gridline-color: #e2e8f0;
+    selection-background-color: #dbeafe;
+    selection-color: #0f172a;
+}
+QTableWidget::item {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+QHeaderView::section {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: none;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 10px 12px;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* 状态列（假设是第5列） */
+QTableWidget::item:nth-child(5) {
+    color: #10b981; /* 薄荷绿 */
+}
+
+/* 生成发票按钮 */
+QPushButton#payButton {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+QPushButton#payButton:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.4);
+}
+QPushButton#payButton:pressed {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px -1px rgba(16, 185, 129, 0.4);
+}
+
+/* 滚动条美化 */
+QScrollBar:vertical {
+    width: 8px;
+    background: #f1f5f9;
+    margin: 0;
+    border-radius: 4px;
+}
+QScrollBar::handle:vertical {
+    background: #94a3b8;
+    border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #64748b;
+}
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* 底部区域 */
+QWidget#bottomWidget {
+    background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 16px;
+}</string>
+  </property>
+  <widget class="QPushButton" name="payButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>440</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter,Microsoft YaHei,sans-serif</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>缴费</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="searchCard" native="true">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>70</y>
+     <width>801</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>缴费类型：</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="paymentTypeComboBox">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>30</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="paymentPeriodSpinBox">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>30</y>
+      <width>46</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>30</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>缴费周期：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>30</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>个月</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>30</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Inter,Microsoft YaHei,sans-serif</family>
+      <pointsize>-1</pointsize>
+      <weight>62</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>地址：</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="addressLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>30</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>×号楼-×0×</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="generateBillButton">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>30</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>生成账单</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>181</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter,Microsoft YaHei,sans-serif</family>
+     <pointsize>-1</pointsize>
+     <weight>87</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>在线缴费</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="paymentTableView">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>150</y>
+     <width>831</width>
+     <height>281</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="payableAmountLabel">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>40</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>searchCard</zorder>
+  <zorder>payButton</zorder>
+  <zorder>label</zorder>
+  <zorder>paymentTableView</zorder>
+  <zorder>payableAmountLabel</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
